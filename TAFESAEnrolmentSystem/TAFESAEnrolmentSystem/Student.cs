@@ -9,7 +9,7 @@ namespace TAFESAEnrolmentSystem
     /// <summary>
     /// Student class represents a student in the TAFESA Enrolment System.
     /// </summary>
-    class Student : Person
+    class Student : Person, IComparable, IComparable<Student>
     {
         // Default constants
         const string DEF_STUDENT_ID = "00000000";
@@ -142,5 +142,39 @@ namespace TAFESAEnrolmentSystem
             return !object.Equals(student1, student2);
         }
 
+        /// <summary>
+        /// Compares the current student with another object of the same type.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(Object obj) {
+            // Check if the object is null
+            if (obj == null) return 1;
+            // Check if the object is of type Student
+            if (obj is Student otherStudent)
+            {
+                // Compare by StudentID
+                return this.StudentID.CompareTo(otherStudent.StudentID);
+            }
+            else
+            {
+                throw new ArgumentException("Object is not a Student");
+            }
+        }
+
+        /// <summary>
+        /// Compares the current student with another student based on StudentID.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Student other)
+        {
+            // Check if the other object is null
+            if (other == null) return 1;
+            // Compare by StudentID
+            return this.StudentID.CompareTo(other.StudentID);
+
+        }
     }
 }

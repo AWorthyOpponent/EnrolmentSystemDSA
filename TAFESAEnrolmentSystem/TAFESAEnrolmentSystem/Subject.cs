@@ -47,7 +47,7 @@ namespace TAFESAEnrolmentSystem
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Subject Code: {SubjectCode}, Name: {SubjectName}, Cost: {Cost:C}";
+            return $"Subject Code: {SubjectCode}, Name: {SubjectName}, Cost: {Cost}";
         }
     }
 }
